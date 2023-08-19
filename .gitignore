@@ -1,0 +1,8 @@
+vendor
+node_modules
+
+# IDE
+.idea
+
+# Configurations
+config/local.neon

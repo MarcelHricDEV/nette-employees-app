@@ -1,0 +1,98 @@
+@use 'sass:map';
+
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #9b479f;
+$pink: #e83e8c;
+$red: #d9230f;
+$orange: #d9831f;
+$orange: #ff9c07;
+$yellow: #ffc107;
+$green: #469408;
+$teal: #20c997;
+$cyan: #029acf;
+
+$primary: $blue;
+$white: #fafafa;
+$grey: #808080;
+$black: #000000;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$warning-alt: $orange;
+$danger: $red;
+$focus: $indigo;
+$alt: $purple;
+
+$colors: (
+    "primary": $primary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "focus": $focus,
+    "alternate": $alt
+);
+
+$border-radius-m: 4px;
+
+// Font
+$font-family: "Inter", sans-serif;
+
+$font-size-m: 0.875rem;
+$font-size-l: 1rem;
+$font-size-xl: 1.125rem;
+$font-size-xxl: 1.5rem;
+$font-size-3xl: 2rem;
+
+$font-sizes: (
+    "m": $font-size-m,
+    "l": $font-size-l,
+    "xl": $font-size-xl,
+    "xxl": $font-size-xxl,
+    "3xl": $font-size-3xl
+);
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-weights: (
+    "normal": $font-weight-normal,
+    "medium": $font-weight-medium,
+    "semibold": $font-weight-semibold,
+    "bold": $font-weight-bold
+);
+
+$breakpoint-xxl: 1400px;
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 1000px;
+$breakpoint-md: 800px;
+$breakpoint-sm: 600px;
+$breakpoint-xs: 400px;
+
+$breakpoints: (
+    "xs": $breakpoint-xs,
+    "sm": $breakpoint-sm,
+    "md": $breakpoint-md,
+    "lg": $breakpoint-lg,
+    "xl": $breakpoint-xl
+);
+
+html {
+    font-family: $font-family;
+}
+
+body {
+    background-color: $white;
+    color: $black;
+    font-family: inherit;
+}
+
+div,
+p {
+    font-size: 0.875rem;
+}
+
+@import "../utility/helpers";
