@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Styles -->
-    <link rel="stylesheet" href="{='resources/scss/app.scss'|viteAsset}">
-    <!-- Scripts -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+		  rel="stylesheet">
+	<!-- Scripts -->
+	{ifset $vite}
+		{if $vite->isEnabled()}
+			<script type="module" src="{='@vite/client'|viteAsset}"></script>
+		{/if}
+	{/ifset}
     {block scripts_head}{/block}
-    <!-- SEO -->
-    <link rel="icon" type="image/x-icon" href="{$baseUrl}/favicon.ico">
-    <title>{ifset title}{include title|stripHtml} | {/ifset}Employees app</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="{='resources/scss/app.scss'|viteAsset}">
+	<!-- SEO -->
+	<link rel="icon" type="image/x-icon" href="{$baseUrl}/favicon.ico">
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Employees app</title>
 </head>
 <body>
 {include content}
