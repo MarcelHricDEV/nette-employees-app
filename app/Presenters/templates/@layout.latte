@@ -10,7 +10,7 @@
 		  rel="stylesheet">
 	<!-- Scripts -->
 	{ifset $vite}
-		{if $vite->isEnabled()}
+		{if !$vite->isProduction()}
 			<script type="module" src="{='@vite/client'|viteAsset}"></script>
 		{/if}
 	{/ifset}
