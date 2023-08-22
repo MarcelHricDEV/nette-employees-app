@@ -1,7 +1,7 @@
 parameters:
 	viteUrl: http://localhost:5173
 	viteManifest: %wwwDir%/manifest.json
-	
+
 search:
 	-
 		in: %appDir%
@@ -13,6 +13,11 @@ search:
 services:
 	- App\Router\RouterFactory::createRouter
 	- App\Services\ViteService(%viteUrl%, %viteManifest%, not(%debugMode%))
+	- App\Services\FilesystemService(%storageDir%)
+	- App\Services\XMLService(@App\Services\FilesystemService)
+	- App\XMLDatabase(@App\Services\XMLService)
+	- App\Repositories\EmployeeRepository
 	nette.latteFactory:
 		setup:
 			- addFilter(viteAsset, App\Latte\ViteAssetFilter())
+	

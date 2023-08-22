@@ -1,6 +1,7 @@
 parameters:
 	rootDir: %appDir%/../
-	
+	storageDir: %rootDir%/storage/app
+
 application:
 	errorPresenter: Error
 	mapping:
