@@ -41,6 +41,11 @@
       "App\\": "app"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "minimum-stability": "stable",
   "config": {
     "allow-plugins": {
