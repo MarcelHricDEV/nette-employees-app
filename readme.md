@@ -5,7 +5,7 @@
 1. Run ```composer i```
 2. Ensure you have file **database.xml** in **storage/app** directory
 3. Run ```npm i```
-4. Run vite using ```npm run build``` or build assets using ```npm run build``` and set application to production mode
+4. Run vite in dev mode using ```npm run dev``` or build assets using ```npm run build``` and set application to production mode
 5. Serve as default Nette application using Apache or Nginx, or run using ```php -S 127.0.0.1:8000``` in **www**
    directory
 
