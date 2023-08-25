@@ -15,13 +15,18 @@ class XMLService
 	) {
 	}
 
+	public function getPath(string $path): string
+	{
+		return $this->filesystemService->getStoragePath($path);
+	}
+
 	public function loadFile(string $path): DOMDocument
 	{
 		$xml = new DOMDocument();
 		$xml->formatOutput = true;
 		$xml->preserveWhiteSpace = false;
 		
-		$loaded = $xml->load($this->filesystemService->getStoragePath($path));
+		$loaded = $xml->load($this->getPath($path));
 
 		if (!$loaded) {
 			throw new \InvalidArgumentException("File [$path] does not exist in storage.");
@@ -72,7 +77,7 @@ class XMLService
 				}
 			}
 
-			/* [MODIFIED]  */
+			/* [MODIFIED] */
 			foreach ($children as $child) {	
 				if (count($child->childNodes) === 1) {
 					$result[$child->nodeName] = $this->toArrayInternal($child);

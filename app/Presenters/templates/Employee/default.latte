@@ -1,0 +1,110 @@
+{block title}Employees{/block}
+
+{block content}
+	<div class="container">
+		<div class="container__inner">
+			<div class="mb-6">
+				<h1 class="heading heading--1">Employees</h1>
+				<div class="mt-2">
+					<span class="color-grey">{=count($employees)} employee/s</span>
+				</div>
+				<div class="mt-4">
+					<a n:href="create" class="color-primary"><i class="fa fa-plus"></i> Create employee</a>
+				</div>
+			</div>
+			<table class="table table--stripped">
+				<thead>
+				<tr class="table-row">
+					<th class="table-cell table-cell--head w-16 text-center">
+						<div class="table-cell__content">
+							ID
+						</div>
+					</th>
+					<th class="table-cell table-cell--head min-w-48">
+						<div class="table-cell__content">
+							Name
+						</div>
+					</th>
+					<th class="table-cell table-cell--head w-16 text-right">
+						<div class="table-cell__content">
+							Age
+						</div>
+					</th>
+					<th class="table-cell table-cell--head w-34">
+						<div class="table-cell__content">
+							Gender
+						</div>
+					</th>
+					<th class="table-cell table-cell--head w-48 text-right">
+						<div class="table-cell__content">
+							Updated at
+						</div>
+					</th>
+					<th class="table-cell table-cell--head w-48 text-right">
+						<div class="table-cell__content">
+							Created at
+						</div>
+					</th>
+					<th class="table-cell table-cell--head w-24 text-right">
+						<div class="table-cell__content">
+
+						</div>
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				{foreach $employees as $employee}
+					<tr class="table-row">
+						<td class="table-cell text-center">
+							<div class="table-cell__content">
+								{$employee->id}
+							</div>
+						</td>
+						<td class="table-cell">
+							<a n:href="Employee:edit $employee->id"
+									class="table-cell__content table-cell__content--link">
+								<span class="table-cell__link">
+									{$employee->getFullName()}
+								</span>
+							</a>
+						</td>
+						<td class="table-cell text-right">
+							<div class="table-cell__content">
+								{$employee->age}
+							</div>
+						</td>
+						<td class="table-cell">
+							<div class="table-cell__content">
+								{$employee->getFormattedGender()}
+							</div>
+						</td>
+						<td class="table-cell text-right">
+							<div class="table-cell__content">
+								{$employee->updated_at->format('d.m.Y H:i')}
+							</div>
+						</td>
+						<td class="table-cell text-right">
+							<div class="table-cell__content">
+								{$employee->created_at->format('d.m.Y H:i')}
+							</div>
+						</td>
+						<td class="table-cell text-right">
+							<div class="table-cell__content">
+								<a n:href="edit $employee->id">
+									<i class="fa fa-edit color-primary"></i>
+								</a>
+								<a n:href="delete! $employee->id">
+									<i class="fa fa-trash color-danger"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				{/foreach}
+				</tbody>
+			</table>
+			<div class="mt-4">
+				<a n:href="charts" class="color-primary"><i class="fa fa-chart-pie"></i> Show charts</a>
+			</div>
+		</div>
+	</div>
+{/block}

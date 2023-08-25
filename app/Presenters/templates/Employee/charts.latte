@@ -1,0 +1,38 @@
+{block title}Charts{/block}
+
+{block content}
+	<div class="container">
+		<div class="container__inner">
+			<div class="mb-6">
+				<div class="mb-2">
+					<a n:href="default" class="color-primary"><i class="fa fa-arrow-left"></i> Back</a>
+				</div>
+				<h1 class="heading heading--1">Employees charts</h1>
+			</div>
+			<div class="charts">
+				<div class="chart">
+					<h2 class="heading heading--2 text-center mb-1">Employees by age</h2>
+					<canvas class="chart__content" id="age_groups_chart"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+{/block}
+
+{block scripts_body}
+	<script>
+        const ctx_1 = document.getElementById('age_groups_chart');
+
+        new Chart(ctx_1, {
+            type: 'pie',
+            data: {
+                labels: {=array_keys($employeesAgeChart)},
+                datasets: [{
+                    label: 'Employees',
+                    data: {=array_values($employeesAgeChart)},
+                    borderWidth: 1
+                }]
+            }
+        })
+	</script>
+{/block}

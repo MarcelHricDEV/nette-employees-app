@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+
+  &__inner {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 80rem;
+  }
+}
+
+.heading {
+  &--1 {
+    font-size: 2rem;
+  }
+
+  &--2 {
+    font-size: 1.5rem;
+  }
+}

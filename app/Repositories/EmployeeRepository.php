@@ -6,8 +6,10 @@ namespace App\Repositories;
 
 
 use App\Interfaces\Repository\IEmployeeRepository;
+use App\Models\BaseModel;
 use App\Models\Employee;
 use App\XMLDatabase;
+use DOMException;
 use Exception;
 
 class EmployeeRepository implements IEmployeeRepository
@@ -37,7 +39,7 @@ class EmployeeRepository implements IEmployeeRepository
 		foreach ($rows as $row) {
 			$models[] = new Employee($row);
 		}
-		
+
 		$models = $this->orderResource($models, $orderBy, $orderDir);
 
 		return $models;
@@ -62,17 +64,72 @@ class EmployeeRepository implements IEmployeeRepository
 	}
 
 	/**
+	 * Save employee to XML database.
+	 *
+	 * @param Employee $employee
+	 * @return BaseModel
+	 * @throws DOMException
+	 */
+	public function save(Employee $employee): BaseModel
+	{
+		return $this->XMLDatabase->resource($this->resource, $this->primaryKeyName)->save($employee);
+	}
+
+	/**
+	 * Delete employee.
+	 *
+	 * @param int $id
+	 * @return boolean
+	 */
+	public function delete(int $id): bool
+	{
+		return $this->XMLDatabase->resource($this->resource, $this->primaryKeyName)->delete($id);
+	}
+
+	/**
+	 * Get employees count by age groups.
+	 *
+	 * @return array<string,int>
+	 * @throws Exception
+	 */
+	public function getCountByAgeRanges(): array
+	{
+		$result = [];
+
+		foreach (Employee::AgeGroups as $values) {
+			$result[$values[0] . '-' . $values[1]] = 0;
+		}
+
+		foreach ($this->getAll() as $row) {
+			$age = $row->getAttribute('age');
+
+			foreach (Employee::AgeGroups as $values) {
+				if ($age >= $values[0] && $age <= $values[1]) {
+					$result[$values[0] . '-' . $values[1]] += 1;
+				}
+			}
+		}
+
+		return $result;
+	}
+	
+	/**
 	 * Order resource.
 	 * 
-	 * @param array $rows
+	 * @param array<Employee> $rows
 	 * @param string $orderBy
 	 * @param mixed $orderDir
 	 * @return array<Employee>
 	 */
 	private function orderResource(array $rows, string $orderBy, mixed $orderDir): array
 	{
-		usort($rows, function ($a, $b) {
-			return $a->id - $b->id;
+		usort($rows, function (BaseModel $a, BaseModel $b) use ($orderBy, $orderDir) {
+			if ($orderDir === 'asc') {
+				return $a->getAttribute($orderBy) - $b->getAttribute($orderBy);
+			}
+
+			return $b->getAttribute($orderBy) - $a->getAttribute($orderBy);
+			
 		});
 
 		return $rows;

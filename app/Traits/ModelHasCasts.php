@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Traits;
 
-
 use App\Models\BaseModel;
+use DateTime;
+
 
 /**
  * @mixin BaseModel
@@ -27,16 +28,22 @@ trait ModelHasCasts
 	 * @param string $value
 	 * @return mixed
 	 */
-	protected function castValue(string $name, string $value): mixed
+	protected function castValue(string $name, mixed $value): mixed
 	{
-		switch ($name) {
-			case 'int':
-				return (int)$value;
-			case 'float':
-				return (float)$value;
-			case 'string':
-			default:
-				return $value;
+		try {
+			switch ($name) {
+				case 'int':
+					return (int)$value;
+				case 'float':
+					return (float)$value;
+				case 'date':
+					return new DateTime($value);
+				case 'string':
+				default:
+					return $value;
+			}		
+		} catch (\Exception $e) {
+			throw new \Exception("Attribute with value \"$value\" is not castable to \"$name\"");
 		}
 	}
 

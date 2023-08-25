@@ -6,7 +6,9 @@
 @import "themes/default";
 
 // Components
-
-// Specific components
+@import "components/table";
+@import "components/input";
+@import "components/button";
 
 // Sections
+@import "sections/charts";

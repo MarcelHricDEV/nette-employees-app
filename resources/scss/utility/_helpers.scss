@@ -31,6 +31,10 @@ $units: 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 40, 48, 60, 64, 80, 90, 96;
     width: #{$unit / 4}rem;
   }
 
+  .min-w-#{$unit} {
+    min-width: #{$unit / 4}rem;
+  }
+
   .h-#{$unit} {
     height: #{$unit / 4}rem;
   }

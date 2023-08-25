@@ -13,9 +13,11 @@ $teal: #20c997;
 $cyan: #029acf;
 
 $primary: $blue;
+$accent: #f5f5f5;
+$accent-dark: #eaeaea;
 $white: #fafafa;
 $grey: #808080;
-$black: #000000;
+$black: #242424;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
@@ -26,6 +28,7 @@ $alt: $purple;
 
 $colors: (
     "primary": $primary,
+    "grey": $grey,
     "success": $success,
     "info": $info,
     "warning": $warning,
@@ -85,7 +88,7 @@ html {
 }
 
 body {
-    background-color: $white;
+    background-color: $accent;
     color: $black;
     font-family: inherit;
 }

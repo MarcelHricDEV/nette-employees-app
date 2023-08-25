@@ -1,0 +1,49 @@
+{block title}Edit employee - {$employee->getFullName()}{/block}
+
+{block content}
+	<div class="container">
+		<div class="container__inner">
+			<div class="mb-6">
+				<div class="mb-2">
+					<a n:href="default" class="color-primary"><i class="fa fa-arrow-left"></i> Back</a>
+				</div>
+				<h1 class="heading heading--1">Edit employee</h1>
+			</div>
+			<form n:name="editForm">
+				<input type="hidden" n:name="id">
+				<div class="input-group input-group--split">
+					<div class="w-fluid mb-4">
+						<label n:name="first_name" class="label">
+							<span class="label__text">First name</span>
+							<input type="text" class="input" n:name="first_name" autofocus="autofocus">
+						</label>
+						<span class="color-danger" n:ifcontent>{inputError first_name}</span>
+					</div>
+					<div class="w-fluid mb-4">
+						<label n:name="last_name" class="label">
+							<span class="label__text">Last name</span>
+							<input type="text" class="input" n:name="last_name">
+						</label>
+						<span class="color-danger" n:ifcontent>{inputError last_name}</span>
+					</div>
+				</div>
+				<div class="mb-4">
+					<label n:name="age" class="label">
+						<span class="label__text">Age</span>
+						<input type="number" class="input" n:name="age">
+					</label>
+					<span class="color-danger" n:ifcontent>{inputError age}</span>
+				</div>
+				<div class="mb-4">
+					<label n:name="gender" class="label">
+						<span class="label__text">Gender</span>
+						<select n:name="gender" class="input"></select>
+					</label>
+					<span class="color-danger" n:ifcontent>{inputError gender}</span>
+				</div>
+				
+				<button type="submit" class="button">Save</button>
+			</form>
+		</div>
+	</div>
+{/block}
