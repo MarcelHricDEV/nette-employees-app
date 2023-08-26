@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-
 use App\Interfaces\Repository\IEmployeeRepository;
 use App\Models\BaseModel;
 use App\Models\Employee;
 use App\XMLDatabase;
 use DOMException;
 use Exception;
+
 
 class EmployeeRepository implements IEmployeeRepository
 {

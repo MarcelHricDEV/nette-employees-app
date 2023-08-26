@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Forms;
 
 use App\Models\Employee;
@@ -14,12 +16,12 @@ class EmployeeFormFactory
 
 		$form->addText('first_name', 'First name')
 			->setRequired('First name is required.')
-			->addRule($form::Pattern, 'First name cannot include special characters','^[A-Za-z]*')
+			->addRule($form::Pattern, 'First name cannot include special characters','^[\w]*')
 			->addRule($form::MaxLength, 'First name cannot be longer than %d.', 100);
 		
 		$form->addText('last_name', 'Last name')	
 			->setRequired('Last name is required.')
-			->addRule($form::Pattern, 'Last name cannot include special characters','^[A-Za-z]*')
+			->addRule($form::Pattern, 'Last name cannot include special characters','^[\w]*')
 			->addRule($form::MaxLength, 'First name cannot be longer than %d.', 100);
 		$form->addInteger('age', 'Age')
 			->setRequired('Age is required.')

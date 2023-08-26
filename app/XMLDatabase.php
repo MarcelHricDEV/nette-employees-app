@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App;
 
@@ -184,7 +185,7 @@ class XMLDatabase
 
 		// Append nodes with attributes
 		foreach ($model->getFillableAttributes() as $key => $value) {
-			$node->appendChild($source->createElement($key, !is_null($value) ? $value : ''));
+			$node->appendChild($source->createElement($key, !is_null($value) ? (string)$value : ''));
 		}
 
 		$resource->appendChild($node);
@@ -206,7 +207,7 @@ class XMLDatabase
 		$row->nodeValue = null;
 
 		foreach ($model->getFillableAttributes() as $key => $value) {
-			$row->appendChild($source->createElement($key, !is_null($value) ? $value : ''));
+			$row->appendChild($source->createElement($key, !is_null($value) ? (string)$value : ''));
 		}
 
 		$source->save($this->XMLService->getPath($this->filename));
