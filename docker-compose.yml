@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    tty: true
+    volumes:
+      - ./:/var/www/employees-app/
+      - vendor:/var/www/employees-app/vendor/
+      - node_modules:/var/www/employees-app/node_modules/
+    networks:
+      - default
+  webserver:
+    container_name: webserver
+    depends_on:
+      - app
+    build:
+      context: ./docker/nginx
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./:/var/www/employees-app/
+      - vendor:/var/www/employees-app/vendor/
+      - node_modules:/var/www/employees-app/node_modules/
+    ports:
+      - '80:80'
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  vendor:
+    driver: local
+  node_modules:
+    driver: local
