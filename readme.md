@@ -2,12 +2,17 @@
 
 ## How to setup
 
-1. Run ```composer i```
-2. Ensure you have file **database.xml** in **storage/app** directory
-3. Run ```npm i```
-4. Run vite in dev mode using ```npm run dev``` or build assets using ```npm run build``` and set application to production mode
-5. Serve as default Nette application using Apache or Nginx, or run using ```php -S 127.0.0.1:8000``` in **www**
-   directory
+### With Docker (using prepared script)
+
+1. Ensure you have file **database.xml** in **storage/app** directory
+2. Run ```sudo chmod -R 755 ./scripts```
+3. Run ```./scripts/start.sh```
+
+### With Docker (using commands)
+
+1. Ensure you have file **database.xml** in **storage/app** directory
+2. Run ```docker-compose up -d```
+3. Run ```docker-compose exec app npm run build``` to build Vite assets
 
 ## Description of used approaches and technologies
 
