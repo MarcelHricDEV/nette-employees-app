@@ -28,7 +28,7 @@
     - Implemented primitive sorting (for now only for numeric values)
     - Implemented primitive grouping (for now only for age)
 - Created **form factory** to handle Employee edit and create form creation
-  - Implemented validation rules
+    - Implemented validation rules
 - Created basic tests to verify valid XML datastore configuration
 
 ### CSS
@@ -61,7 +61,11 @@ and more...
 4. Add field, rules to form factory used by edit and create views
 5. Add suitable input type in edit and create views
 
-NOTE 1: It could be possibly restructured to omit changes in views making it simpler, but in this case it would be a bit
+NOTE 1: It could be possibly restructured to omit changes in views (steps 3 and 5; adding inputs in view) making it simpler, but in
+this case it would be a bit
 over-engineering and simpler implementation would have visual/technical drawbacks.
 
-NOTE 2: Models now supports only table-like (2D) data, arrays can be stored flattened
+NOTE 2: Edit and create form content (in view) could be merged into single to provide simpler modification, but in this case I
+prefer readability and ability to control content separately.
+
+NOTE 3: Models now supports only table-like (2D) data, arrays can be stored flattened.
