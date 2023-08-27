@@ -24,7 +24,7 @@
     - Implemented primitive grouping (for now only for age)
 - Created **form factory** to handle Employee edit and create form creation
   - Implemented validation rules
-- Created basic tests to verify successful XML datastore configuration
+- Created basic tests to verify valid XML datastore configuration
 
 ### CSS
 
