@@ -14,11 +14,12 @@
 			<script type="module" src="{='@vite/client'|viteAsset}"></script>
 		{/if}
 	{/ifset}
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {block scripts_head}{/block}
 	<!-- Styles -->
 	<link rel="stylesheet" href="{='resources/scss/app.scss'|viteAsset}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		  integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer"/>
 	<!-- SEO -->
 	<link rel="icon" type="image/x-icon" href="{$baseUrl}/favicon.ico">
 	<title>{ifset title}{include title|stripHtml} | {/ifset}Employees app</title>
