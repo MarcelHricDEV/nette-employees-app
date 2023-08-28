@@ -24,7 +24,7 @@
     - Implemented modifiable columns list (possible future issue: possible mismatch of unsaved rows, currently
       non-breaking, possible fix: migration system)
     - Implemented explicit attribute casting
-- Created **repositories** to provide simplified interface for data (models) retrieval
+- Created **repositories** to provide simplified interface for data (models) manipulation
     - Implemented primitive sorting (for now only for numeric values)
     - Implemented primitive grouping (for now only for age)
 - Created **form factory** to handle Employee edit and create form creation
